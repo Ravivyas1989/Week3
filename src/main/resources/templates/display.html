@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>Registration Table
+</head>
+<body>
+
+	<form>
+		<table border="1">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Password</th>
+				<th>Delete</th>
+			</tr>
+			<tr th:each="list : ${list}">
+				<td th:text="${list.id}">ID</td>
+				<td th:text="${list.userName}">Name</td>
+				<td th:text="${list.userPassword}">Password</td>
+				<!-- 	<td><a th:href="@{/delete/{id}}">Edit</a></td> -->
+
+				<td>
+					<!-- 				<a th:href="@{/delete/{id}}"
+						th:action="@{'/delete/{id}'(id=${list.id})}" th:method="delete"> <input
+							type="submit" value="Delete" />
+					</a> -->
+					<form th:action="@{'/delete/{id}'(id=${list.id})}"
+						th:method="delete">
+						<input type="submit" value="Delete" />
+					</form>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
